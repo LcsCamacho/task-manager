@@ -272,7 +272,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -282,11 +282,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://taskmanager_owner:npg_kHMuhvD5i8zw@ep-hidden-field-ackk84ug-pooler.sa-east-1.aws.neon.tech/taskmanager?sslmode=require"
+        "value": null
       }
     }
   },

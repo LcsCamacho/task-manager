@@ -1,3 +1,4 @@
+"use server"
 import { db } from "@/lib/prisma"
 import { userRequired } from "../user/is-user-authenticated"
 
@@ -5,7 +6,7 @@ export const getUserWorkspaces = async () => {
     try {
         const {user} =await userRequired()
 
-        const workspaces = await db.user.findUnique({
+        const data = await db.user.findUnique({
             where: {id:user?.id},
             include: {
                 workspaces: {
@@ -22,9 +23,11 @@ export const getUserWorkspaces = async () => {
                 }
             }
         })
+
+        return {data}
     } catch (error) {
         console.log(error)
-        return undefined
+        return {data:undefined, error:true, message:"Failed to fetch workspace"}
     }
 
 }
